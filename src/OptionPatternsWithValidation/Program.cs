@@ -17,9 +17,10 @@ public class Program
 
         #endregion
 
-        builder.Services.AddOptions<AppOptions>().Bind(
-            builder.Configuration.GetSection(nameof(AppOptions)))
-            .ValidateDataAnnotations();
+        builder.Services.AddOptions<AppOptions>()
+            .BindConfiguration(nameof(AppOptions))
+            .ValidateDataAnnotations()
+            .ValidateOnStart();
 
         #region default middleware
 
